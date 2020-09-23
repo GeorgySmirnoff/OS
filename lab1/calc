@@ -1,0 +1,25 @@
+#!/bin/bash
+
+
+
+case $1 in
+"sum") echo "$2 + $3 ="  $[$2 + $3];;
+"sub") echo "$2 - $3 ="  $[$2 - $3];;
+"mul") echo "$2 * $3 ="  $[$2 * $3];;
+"div") if (($3 == 0));
+  then
+ echo "error: delimiter by zero" >&2
+exit -1;
+ else
+  echo "$2 / $3 ="  $[$2 / $3];
+   fi;;
+*) echo "command is  unknown!" >&2
+exit -1;
+esac
+
+
+
+
+
+
+

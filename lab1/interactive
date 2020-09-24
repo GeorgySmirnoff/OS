@@ -5,7 +5,7 @@
 . ./strlen
 . ./help
 . ./_exit
-#. ./log
+. ./log
 interactive()
 {
 while :
@@ -57,10 +57,10 @@ read string
 strlen "$string"
 ./interactive;;
 
-#e | log )
-#echo "log"
-#log
-#./interactive;;
+e | log )
+echo "log"
+log
+./interactive;;
 
 f | _exit )
 echo "Enter exit code"

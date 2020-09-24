@@ -7,6 +7,7 @@ source strlen
 source _exit
 source help
 source interactive
+source log
 
 case  "$1" in
  "calc")
@@ -23,4 +24,6 @@ _exit "$2";;
 help;;
 "interactive")
 interactive;;
+"log")
+log;;
 esac

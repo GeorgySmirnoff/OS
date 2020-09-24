@@ -1,0 +1,10 @@
+#!/bin/bash
+
+log(){
+Yellow ='\033[93m'
+Blue='\033[34m'
+F='\033[0m'
+grep "WW" /var/log/anaconda/X.lod | sed '' /WW/s//`printf "${Yellow}Warning${F}"`/'' > text3
+grep "II" /var/log/anaconda/X.log | sed ''/II/s//`printf "${Blue}Information${F}"`/'' >> text3
+cat text3
+}

@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 source calc
@@ -10,8 +11,14 @@ source interactive
 source log
 
 case  "$1" in
- "calc")
-calc "$2" "$3" "$4";;
+"calc")
+if [[ "$#" -eq 4 ]]
+then 
+calc "$2" "$3" "$4"
+else 
+echo "Only 4 args" >&2
+exit 5
+fi;;
 "search")
 search "$2" "$3";;
 "reverse")

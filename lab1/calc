@@ -3,24 +3,29 @@
 
 calc()
 {
+#Check amount of args
+if [[ "$#" -ne 3 ]]
+then
+echo "Not 4 arguments" >&2
+exit 1 
+elif ! [[ $2 =~ ^[+-]?[0-9]+$ ]] || ! [[ $3 =~ ^[+-]?[0-9]+$ ]]
+then
+echo "You can deal with numbers only!" >&2
+exit 2
+fi
+
 case $1 in
 "sum") echo "$2 + $3 ="  $[$2 + $3];;
 "sub") echo "$2 - $3 ="  $[$2 - $3];;
 "mul") echo "$2 * $3 ="  $[$2 * $3];;
 "div") if (($3 == 0));
-  then
- echo "error: delimiter by zero" >&2
+then
+echo "error: delimiter by zero" >&2
 exit -1;
- else
-  echo "$2 / $3 ="  $[$2 / $3];
-   fi;;
+else
+echo "$2 / $3 ="  $[$2 / $3];
+fi;;
 *) echo "command is  unknown!" >&2
 exit -1;
 esac
 }
-
-
-
-
-
-

@@ -1,7 +1,8 @@
 #!/bin/bash
 
 
-calc(){
+calc()
+{
 case $1 in
 "sum") echo "$2 + $3 ="  $[$2 + $3];;
 "sub") echo "$2 - $3 ="  $[$2 - $3];;

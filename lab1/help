@@ -1,0 +1,13 @@
+#!/bin/bash
+
+
+help(){
+echo "a- Calc ,choose action : sum/sub/mul/div,input arguments x and y "
+echo "b- Search- recursive search of key in fails in oppropriate directory"
+echo "c- Reverse - rewrite the file in opposite way in another file"
+echo "d- Strlen - shows amount of symbols in string"
+echo "e- Log - replace ee and ii on warning and information in /var/log/anaconda/x.log"
+echo "f- Exit - breaks programm with oppropriate code"
+echo "g- Help - shows commands info"
+echo "h- Interactive - turns on interactive mode"
+}

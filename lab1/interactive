@@ -1,0 +1,85 @@
+#!/bin/bash
+. ./reverse
+. ./search
+. ./calc
+. ./strlen
+. ./help
+. ./_exit
+#. ./log
+interactive()
+{
+while :
+do
+clear
+echo
+echo -e "\t\t\tMenu \n"
+echo -e "\ta- calc"
+echo -e "\tb- search"
+echo -e "\tc- revers"
+echo -e "\td- strlen"
+echo -e "\te- log"
+echo -e "\tf- exit"
+echo -e "\tg- help"
+echo -e "\tEnter the letter or name of command!"
+
+read choice
+
+case "$choice" in
+a | calc )
+echo "Choose action :  sum/sub/mul/div"
+read act
+echo "Enter first arg"
+read first
+echo "Enter second arg"
+read second
+calc "$act" "$first" "$second"
+./interactive;;
+
+b | search )
+echo "Enter directory where to find"
+read directory
+echo "Enter what to find"
+read word
+search "$directory" "$word"
+./interactive;;
+
+c | reverse )
+echo "Enter which file to read "
+read file_1
+echo "Enter where to write reversed file"
+read file_2
+reverse "$file_1" "$file_2"
+./interactive;;
+
+d | strlen )
+echo "Enter your string"
+read string
+strlen "$string"
+./interactive;;
+
+#e | log )
+#echo "log"
+#log
+#./interactive;;
+
+f | _exit )
+echo "Enter exit code"
+read code;
+_exit "$code"
+./interactive;;
+
+g | help )
+echo "help"
+help
+./interactive;;
+
+* )
+echo "Unknown command!" 
+esac
+echo "Write  STOP to end programm"
+read decision
+if [[ "$decision" == "STOP" ]];
+then break;
+fi
+done 
+}

@@ -5,7 +5,8 @@ source search
 source reverse
 source strlen
 source _exit
-
+source help
+source interactive
 
 case  "$1" in
  "calc")
@@ -16,6 +17,10 @@ search "$2" "$3";;
 reverse "$2" "$3";;
 "strlen")
 strlen "$2";;
-"exit")
+"_exit")
 _exit "$2";;
+"help")
+help;;
+"interactive")
+interactive;;
 esac

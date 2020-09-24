@@ -1,5 +1,6 @@
 
 #!/bin/bash
+
 reverse(){
 if ! [[ -f $1 ]] || ! [[ -f $2 ]]
 then

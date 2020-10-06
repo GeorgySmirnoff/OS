@@ -3,12 +3,8 @@
 
 calc()
 {
-#Check amount of args
-if [[ "$#" -ne 3 ]]
-then
-echo "Not 4 arguments" >&2
-exit 1 
-elif ! [[ $2 =~ ^[+-]?[0-9]+$ ]] || ! [[ $3 =~ ^[+-]?[0-9]+$ ]]
+#Check numbers 
+if ! [[ $2 =~ ^[+-]?[0-9]+$ ]] || ! [[ $3 =~ ^[+-]?[0-9]+$ ]]
 then
 echo "You can deal with numbers only!" >&2
 exit 2

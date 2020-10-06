@@ -1,5 +1,17 @@
 #!/bin/bash
 
 search(){
-grep -r $2 /$1
+if [ -d $1 ]
+then 
+if [ -r $1 ]
+then
+grep -IRs $2 $1
+else 
+echo "Error:read permission denied"
+exit 7
+fi
+else
+echo "Error:directory does not exist"
+exit 8
+fi
 }

@@ -16,11 +16,17 @@ if [[ "$#" -eq 4 ]]
 then 
 calc "$2" "$3" "$4"
 else 
-echo "Only 4 args" >&2
+echo "Error: not correct amount of arguments" >&2
 exit 5
 fi;;
 "search")
-search "$2" "$3";;
+if [[ "$#" -eq 3 ]]
+then
+search "$2" "$3"
+else
+echo "Error: not correct amount of arguments" >&2
+exit 5
+fi;;
 "reverse")
 reverse "$2" "$3";;
 "strlen")

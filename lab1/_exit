@@ -8,6 +8,6 @@ elif [[ $1 =~ ^[0-9]+$ ]]
 then echo "$1"
 exit $1
 else
-echo "error"
+echo  " Numbers only"
 fi
 }

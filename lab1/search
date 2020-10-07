@@ -5,13 +5,13 @@ if [ -d $1 ]
 then 
 if [ -r $1 ]
 then
-grep -IRs $2 $1
+grep -r $2 $1 
 else 
-echo "Error:read permission denied"
+echo "Error:read permission denied" >&2
 exit 7
 fi
 else
-echo "Error:directory does not exist"
+echo "Error:directory does not exist" >&2
 exit 8
 fi
 }

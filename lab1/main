@@ -28,7 +28,13 @@ echo "Error: not correct amount of arguments" >&2
 exit 5
 fi;;
 "reverse")
-reverse "$2" "$3";;
+if [[ "$#" -eq 3 ]]
+then
+reverse "$2" "$3"
+else
+echo "Error: not correct amount of arguments" >&2
+exit 5
+fi;;
 "strlen")
 strlen "$2";;
 "_exit")

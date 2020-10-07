@@ -2,10 +2,33 @@
 #!/bin/bash
 
 reverse(){
-if ! [[ -f $1 ]] || ! [[ -f $2 ]]
+if ! [[ -f $1 ]] 
 then
-echo "The first or second file does not exist" >&2
-exit -1
+echo "Error: file does not exist" >&2
+exit 7
 fi
+if [[ -e $2 ]]
+then
+if [[ -w $2 && -r $1 ]]
+then 
+if [[ "$1" != "$2" ]]
+then 
 tac $1 > $2
+else
+cat $1 > tmp
+tac tmp > $2
+rm tmp
+fi
+else
+echo "Error: permissin denied" >&2
+exit 9
+fi
+else
+if [[ -r $1 ]]
+then
+tac $1 > $2
+else
+echo "Error: permission denied" >&2
+fi
+fi
 }

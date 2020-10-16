@@ -1,0 +1,15 @@
+#!/bin/bash
+
+function myfunc {
+echo "EXAMPLE"
+}
+
+count=1
+while [ $count -le 3 ]
+do
+myfunc
+count=$(( $count + 1 ))
+done
+echo "End"
+myfunc
+echo "KONETS"

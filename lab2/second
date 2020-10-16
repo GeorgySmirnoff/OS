@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ps -afx |grep \/sbin\/ |grep -v usr |grep -v $$
+#echo $$

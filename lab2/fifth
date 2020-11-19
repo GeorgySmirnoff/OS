@@ -14,13 +14,13 @@ while read str; do
 		ARTSUM=$(echo "$ARTSUM+$ART" | bc | awk '{printf "%f", $0}')
 		COUNT=$(($COUNT+1))
 	else
-		AVG=$(echo "scale=5; $ARTSUM/$COUNT" | bc | awk '{printf "%f", $0}')
+		AVG=$(printf "$ARTSUM $COUNT" | awk '{printf("%f",$1/$2)}')
 		echo "Average_Children_Running_Time_of_ParentID="$ppid_0" is "$AVG
 		ARTSUM=$ART
 		COUNT=1
 		ppid_0=$ppid
 	fi
 	if [[ ! -z $pid ]]; then
-		echo "PID="$pid":PPID="$ppid":ART="$ART
+		echo "PID="$pid" : PPID="$ppid" : ART="$ART
 	fi
 done > res.fifth.txt

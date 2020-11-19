@@ -1,4 +1,4 @@
 #!/bin/bash
 
-ps -afx |grep \/sbin\/ |grep -v usr |grep -v $$
+ps -afx |grep \/sbin\/ |grep -v usr |grep -v $$ > res.second.txt
 #echo $$

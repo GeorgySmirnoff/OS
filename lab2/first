@@ -1,6 +1,4 @@
 #!/bin/bash
-
-
 ps -Ao pid,user,size |grep user|wc -l > res1.txt
-ps -U user -Ao  pid,command |awk '{print  $1 ":" $2}'|tail -n +2
+ps -Ao  pid,user,size|grep user|awk '{print  $1 ":" $2}'|tail -n +2
 

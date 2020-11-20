@@ -1,0 +1,11 @@
+#!/bin/bash
+
+./3_4_1&pid0=$!
+./3_4_1&pid1=$!
+./3_4_1&pid2=$!
+#echo $pid0
+
+cpulimit --pid=$pid0 --limit=10 &
+
+kill ${pid2}
+at now + 1 minute <<< "kill ${pid0} ; kill ${pid1}"

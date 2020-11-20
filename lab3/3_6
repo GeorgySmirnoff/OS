@@ -1,0 +1,4 @@
+#!/bin/bash
+
+./3_6_proc&pid=$!
+./3_6_generator $pid

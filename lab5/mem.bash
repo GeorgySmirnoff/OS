@@ -12,6 +12,6 @@ let count++
 if [[ $count == 100000 ]]
 then
 count=0
-echo ${#array[@]} >> report.log
+echo ${#arr[@]} >> report.log
 fi
 done

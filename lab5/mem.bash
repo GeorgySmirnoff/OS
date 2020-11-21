@@ -4,6 +4,7 @@
 
 arr=() #пустой массив
 count=0  #счетчик шагов
+echo "" > report.log
 while :
 do
 echo "Бесконечный цикл bash, для выхода нажмите Ctrl+C"

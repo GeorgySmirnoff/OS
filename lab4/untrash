@@ -1,0 +1,67 @@
+#!/bin/bash
+
+FILE=$1
+PATH=""
+LOGNAME=""
+
+
+if ! [ $# = 1 ]; then
+ echo "Only 1 argument!"
+ exit 1 
+fi
+if ! [ -d "$HOME/.trash" ]; then
+ echo "Derictory was not created"
+ exit 1
+ fi
+ if ! [ -f "$HOME/trash.log" ]; then
+ echo "Trash.log was not created."
+ exit 1 
+fi
+if [[ -z $(grep "$1" "~/.trash.log") ]]; then
+ echo "File $1 does not exist."
+ exit 1
+fi
+
+while read line
+do
+  str=$(echo $line | awk '{print $1}')
+  str=${str##*/}
+  if [[ $str = $FILE ]]; then
+     read -p "Do you want to restore this file: ${echo $line | awk '{print $1}')? y/n" ans <&1
+     case $ans in
+     "y")
+          PATH=$(echo $line | awk '{print $1}')
+          LOGNAME=$(echo $line | awk '{print $2}')
+      "n") continue ;;
+      "*" continue ;;
+      esac
+      fi
+done < $HOME/.trash.log
+
+if [[ -z $PATH ]]
+then
+echo "File was not found!"
+exit 1
+fi
+
+if [[ ! -d ${PATH%/*} ]]; then
+    echo "Previous derictory does not exist"
+    read -p "Do you want to save in home derictory? y/n " ans <&1
+    case $ans in
+    "y")
+     PATH=$HOME/$FILE ;;
+    "n")
+     continue ;;
+     "*"
+     continue ;;
+     esac
+fi
+
+if [[ -f "${PATH}" ]]; then
+    read -p "File with this name already exist. Write new name: " ans <&1
+    ln "$HOME/.trash/$LOGNAME" "$(dirname "PATH")/$ans"
+    rm "$HOME/.trash/$LOGNAME"
+else
+    ln "$HOME/.trash/$LOGNAME" "$PATH"
+    rm "$HOME/.trash/$LOGNAME" 
+fi

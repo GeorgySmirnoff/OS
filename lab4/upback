@@ -1,0 +1,18 @@
+#!/bin/bash
+lBD=$(ls $HOME | grep -E "^Backup-" | sort -n | tail -1 | sed 's/^Backup-//')
+lB="$HOME/Backup-${lBD}"
+if [[ -z "$lBD" ]]; then
+  echo "Nothing to restore";
+  exit 1;
+ fi
+
+ if ! [[ -d $HOME/restore ]]; then 
+ mkdir -v $HOME/restore 
+else
+  rm -rfv $HOME/restore 
+  mkdir -v $HOME/restore 
+fi
+
+for obj in $(ls $lB | grep -Ev "\.[0-9]{4}-[0-9]{2}-[0-9]{2}$"); do
+  cp -v "${lB}/${obj}" "$HOME/restore/${obj}"
+done

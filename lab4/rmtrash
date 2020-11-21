@@ -1,0 +1,30 @@
+#!/bin/bash
+
+FILE="$PWD/$1"
+
+UNIQUENAME=$(date +"%s")
+
+if ! [ $# = 1 ]; then
+  echo "Only 1 argument!!!"
+  exit 1
+fi
+
+if ! [ -e $FILE ]; then
+  echo "File does not exist"
+  exit 1
+fi
+
+
+if ! [ -d ~/.trash ]; then
+  mkdir ~/.trash
+  touch ~/.trach.log
+fi
+
+ln "$FILE" "$HOME/.trash/$UNIQUENAME"
+
+echo "$FILE $UNIQUENAME" >> ~/.trash.log
+
+rm "$FILE"
+
+
+
